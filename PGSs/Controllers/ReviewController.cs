@@ -18,12 +18,29 @@ namespace PGSs.Controllers
             _reviewService = new ReviewService();
         }
 
-        [HttpPost, Route("movies/{id:int}/review")]
+        [HttpPost, Route("movies/{movieId:int}/review")]
         public IHttpActionResult AddReviewToMovie(int movieId, ReviewRequest request)
         {
-            //walidacja
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             _reviewService.AddReviewToMovie(movieId, request);
-            return Ok();
+            return Ok("Review added");
         }
+
+        [HttpGet, Route("movies/{movieId:int}/reviews")]
+        public IHttpActionResult GetReviewsForMovie(int movieId)
+        {
+            return Ok(_reviewService.GetReviewsForMovie(movieId));
+        }
+
+        [HttpGet, Route("movies/{movieId:int}/rate")]
+        public IHttpActionResult GetAvgRateForMovieById(int movieId)
+        {
+            var rate = _reviewService.GetAvgRateForMovie(movieId);
+            return Ok(rate);
+        }
+
     }
 }

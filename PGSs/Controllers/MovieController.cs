@@ -44,11 +44,35 @@ namespace PGSs.Controllers
             return Ok(movie);
         }
 
+        [HttpGet, Route("movies/date/{dateMin:int}/{dateMax:int?}")]
+        public IHttpActionResult GetMoviesByDate(int dateMin, int? dateMax=null)
+        {
+            if (!dateMax.HasValue)
+            {
+                dateMax = dateMin;
+            }
+            if (dateMax.Value < dateMin)
+            {
+                int temp = dateMax.Value;
+                dateMax = dateMin;
+                dateMin = temp;
+            }
+            var movies = _movieService.GetByDate(dateMin, dateMax.Value);
+            return Ok(movies);
+        }
+
+        [HttpGet, Route("movies/title/{title}")]
+        public IHttpActionResult GetMoviesByTitle(string title)
+        {
+            var movies = _movieService.GetByTitle(title);
+            return Ok(movies);
+        }
+
         [HttpDelete, Route("movies/{id:int}")]
         public IHttpActionResult Delete(int id)
         {
             _movieService.Delete(id);
-            return Ok();
+            return Ok("deleted");
         }
     }
 }

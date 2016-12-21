@@ -5,10 +5,9 @@ using System.Web;
 
 namespace PGSs.Models
 {
-    public class MovieRequest
+    public class ActorRequest
     {
-        public string Title { get; set; }
-        public int Year { get; set; }
-
+        public string Forename { get; set; }
+        public string Surname { get; set; }
     }
 }

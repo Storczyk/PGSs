@@ -94,8 +94,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActorController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="DAL\Actor.cs" />
     <Compile Include="DAL\Movie.cs" />
     <Compile Include="DAL\Review.cs" />
     <Compile Include="DAL\TvApiContext.cs" />
@@ -110,11 +112,27 @@
     <Compile Include="Migrations\201612191829461_Review.Designer.cs">
       <DependentUpon>201612191829461_Review.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612211858234_Actor.cs" />
+    <Compile Include="Migrations\201612211858234_Actor.Designer.cs">
+      <DependentUpon>201612211858234_Actor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612211936174_dbsetActor.cs" />
+    <Compile Include="Migrations\201612211936174_dbsetActor.Designer.cs">
+      <DependentUpon>201612211936174_dbsetActor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612211946100_Actor-datetime=problems.cs" />
+    <Compile Include="Migrations\201612211946100_Actor-datetime=problems.Designer.cs">
+      <DependentUpon>201612211946100_Actor-datetime=problems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ActorRequest.cs" />
+    <Compile Include="Models\ActorRespone.cs" />
     <Compile Include="Models\MovieRequest.cs" />
     <Compile Include="Models\MovieResponse.cs" />
     <Compile Include="Models\ReviewRequest.cs" />
+    <Compile Include="Models\ReviewResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ActorService.cs" />
     <Compile Include="Services\MovieService.cs" />
     <Compile Include="Services\ReviewService.cs" />
   </ItemGroup>
@@ -136,6 +154,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612191829461_Review.resx">
       <DependentUpon>201612191829461_Review.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612211858234_Actor.resx">
+      <DependentUpon>201612211858234_Actor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612211936174_dbsetActor.resx">
+      <DependentUpon>201612211936174_dbsetActor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612211946100_Actor-datetime=problems.resx">
+      <DependentUpon>201612211946100_Actor-datetime=problems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

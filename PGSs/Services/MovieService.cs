@@ -59,6 +59,38 @@ namespace PGSs.Services
             }
         }
 
+        internal IEnumerable<MovieResponse> GetByDate(int dateMin, int dateMax)
+        {
+            using (var ctx = new TvApiContext())
+            {
+                var movies = ctx.Movies.Where(x => x.Year >= dateMin && x.Year <= dateMax).Select(m => new MovieResponse()
+                {
+                    Id = m.Id,
+                    Title = m.Title,
+                    Year = m.Year
+                }).ToList();
+                if (movies == null)
+                    return null;
+                return movies;
+            }
+        }
+
+        internal IEnumerable<MovieResponse> GetByTitle(string title)
+        {
+            using (var ctx = new TvApiContext())
+            {
+                var movies = ctx.Movies.Where(x => x.Title.Contains(title)).Select(m => new MovieResponse()
+                {
+                    Id = m.Id,
+                    Title = m.Title,
+                    Year = m.Year
+                }).ToList();
+                if (movies == null)
+                    return null;
+                return movies;
+            }
+        }
+
         internal void Delete(int id)
         {
             using (var ctx = new TvApiContext())
