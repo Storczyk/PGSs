@@ -1,4 +1,5 @@
 ﻿using PGSs.Models;
+using PGSs.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,68 +11,43 @@ namespace PGSs.Controllers
 {
     public class MovieController : ApiController
     {
-        private List<Movie> getMovies()
+        private MovieService _movieService;
+
+        public MovieController()
         {
-            List<Movie> movies = new List<Movie>
-            {
-                new Movie
-                {
-                    Id=1,
-                    Title="film",
-                    Author="Ruszpala",
-                    Comments = new List<string>
-                    {
-                        "super", "cool"
-                    }
-                },
-                new Movie
-                {
-                    Id=2,
-                    Title="ruszpalafilmciulowy",
-                    Author="rafal",
-                    Comments = new List<string>(),
-                }
-            };
-            return movies;
+            _movieService = new MovieService();
         }
 
         [HttpGet, Route("movies")]
         public IHttpActionResult GetAllMovies()
         {
-            List<Movie> movies = getMovies();
-
-            return Ok(movies);
+            return Ok(_movieService.GetAllMovies());
         }
 
         [HttpPost, Route("movies")]
-        public IHttpActionResult AddMovie(Movie movie)
+        public IHttpActionResult AddMovie([FromBody]MovieRequest movie)
         {
-            return Ok(movie);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _movieService.Add(movie);
+
+            return Ok("added");
         }
 
         [HttpGet, Route("movies/{id:int}")]
         public IHttpActionResult GetById(int id)
         {
-            List<Movie> movies = getMovies();
-            Movie movie = movies.Where(i => i.Id == id).SingleOrDefault();
-            if(movie == null)
-            {
-                return NotFound();
-            }
+            var movie = _movieService.Find(id);
             return Ok(movie);
         }
 
-        [HttpDelete,Route("movies/{id:int}")]
+        [HttpDelete, Route("movies/{id:int}")]
         public IHttpActionResult Delete(int id)
         {
-            List<Movie> movies = getMovies();
-            var movie = movies.SingleOrDefault(i => i.Id == id);
-            if(movie == null)
-            {
-                return BadRequest();
-            }
-
-            movies.Remove(movie);
+            _movieService.Delete(id);
             return Ok();
         }
     }
