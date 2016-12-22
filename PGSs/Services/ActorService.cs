@@ -17,52 +17,53 @@ namespace PGSs.Services
                 {
                     return false;
                 }
-                ctx.Movies.Find(movieId).Actors.Add(new Actor()
+                var actorExisting = ctx.Actors.FirstOrDefault(i => i.Surname == actor.Surname && i.Forename == actor.Forename);
+                if (actorExisting == null)
                 {
-                    Surname = actor.Surname,
-                    Forename = actor.Forename,
-                });
+                    ctx.Movies.Find(movieId).Actors.Add(new Actor()
+                    {
+                        Surname = actor.Surname,
+                        Forename = actor.Forename
+                    });
+                    ctx.SaveChanges();
+                    return true;
+                }
+                ctx.Movies.Find(movieId).Actors.Add(actorExisting);
                 ctx.SaveChanges();
                 return true;
             }
         }
 
-        internal IEnumerable<ActorRespone> GetActors(int? movieId = null)
+        internal IEnumerable<ActorRespone> GetActorsForMovie(int movieId)
         {
             using (var ctx = new TvApiContext())
             {
-                if (movieId.HasValue)
+                var movie = ctx.Movies.Find(movieId);
+                if (movie == null)
                 {
-                    var movie = ctx.Movies.Find(movieId);
-                    if (movie == null)
-                    {
-                        return null;
-                    }
-                    if (movie.Actors.Any())
-                    {
-                        return movie.Actors.Select(a => new ActorRespone()
-                        {
-                            Id = a.Id,
-                            Forename = a.Forename,
-                            Surname = a.Surname
-                        }).ToList();
-                    }
                     return null;
+                }
 
-                }
-                if (ctx.Actors.Any())
+                return movie.Actors.Select(a => new ActorRespone()
                 {
-                    return ctx.Actors.Select(a => new ActorRespone()
-                    {
-                        Id = a.Id,
-                        Forename = a.Forename,
-                        Surname = a.Surname
-                    }).ToList();
-                }
-                return null;
+                    Id = a.Id,
+                    Forename = a.Forename,
+                    Surname = a.Surname
+                }).ToList();
             }
         }
 
-
+        internal IEnumerable<ActorRespone> GetAllActors()
+        {
+            using (var ctx = new TvApiContext())
+            {
+                return ctx.Actors.Select(a => new ActorRespone()
+                {
+                    Id = a.Id,
+                    Forename = a.Forename,
+                    Surname = a.Surname
+                }).ToList();
+            }
+        }
     }
 }

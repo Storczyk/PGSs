@@ -44,7 +44,7 @@ namespace PGSs.Controllers
             return Ok(movie);
         }
 
-        [HttpGet, Route("movies/date/{dateMin:int}/{dateMax:int?}")]
+        [HttpGet, Route("movies/date/{dateMin:int}/{dateMax:int?}", Name = "GetMoviesByDate")]
         public IHttpActionResult GetMoviesByDate(int dateMin, int? dateMax=null)
         {
             if (!dateMax.HasValue)

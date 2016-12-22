@@ -69,8 +69,7 @@ namespace PGSs.Services
                     Title = m.Title,
                     Year = m.Year
                 }).ToList();
-                if (movies == null)
-                    return null;
+
                 return movies;
             }
         }

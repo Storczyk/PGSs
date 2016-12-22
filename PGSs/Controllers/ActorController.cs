@@ -20,14 +20,14 @@ namespace PGSs.Controllers
         [HttpGet, Route("movies/{movieId:int}/actors")]
         public IHttpActionResult GetActorsForMovie(int movieId)
         {
-            var actors = _actorService.GetActors(movieId);
+            var actors = _actorService.GetActorsForMovie(movieId);
             return Ok(actors);
         }
 
         [HttpGet, Route("actors")]
         public IHttpActionResult GetAllActors()
         {
-            var actors = _actorService.GetActors();
+            var actors = _actorService.GetAllActors();
             return Ok(actors);
         }
 
