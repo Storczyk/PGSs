@@ -10,7 +10,7 @@ namespace PGSs.DAL
         public int Id { get; set; }
         public string Forename { get; set; }
         public string Surname { get; set; }
-
+        public DateTime Birthdate { get; set; }
         public virtual ICollection<Movie> Movies { get; set; }
     }
 }

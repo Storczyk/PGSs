@@ -124,6 +124,10 @@
     <Compile Include="Migrations\201612211946100_Actor-datetime=problems.Designer.cs">
       <DependentUpon>201612211946100_Actor-datetime=problems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612222044495_Actor+DateTime.cs" />
+    <Compile Include="Migrations\201612222044495_Actor+DateTime.Designer.cs">
+      <DependentUpon>201612222044495_Actor+DateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActorRequest.cs" />
     <Compile Include="Models\ActorRespone.cs" />
@@ -163,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612211946100_Actor-datetime=problems.resx">
       <DependentUpon>201612211946100_Actor-datetime=problems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612222044495_Actor+DateTime.resx">
+      <DependentUpon>201612222044495_Actor+DateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -44,5 +44,24 @@ namespace PGSs.Controllers
             }
             return Ok("added");
         }
+
+        [HttpDelete, Route("movies/{movieId:int}/{actorId:int}")]
+        public IHttpActionResult DeleteFromMovie(int movieId, int actorId)
+        {
+            /*Wersja 1*/
+            if (!_actorService.DeleteFromMovie(movieId, actorId))
+            { 
+                return BadRequest();
+            }
+            return Ok("deleted");
+        }
+
+        [HttpDelete, Route("actors/{actorId:int}")]
+        public IHttpActionResult DeleteFromDb(int actorId)
+        {
+            /*Wersja 2 //zawsze zwraca "deleted" nawet jak encja (już) nie istnieje*/
+            _actorService.DeleteFromDb(actorId); 
+            return Ok("deleted");
+        }
     }
 }

@@ -17,18 +17,19 @@ namespace PGSs.Services
                 {
                     return false;
                 }
-                var actorExisting = ctx.Actors.FirstOrDefault(i => i.Surname == actor.Surname && i.Forename == actor.Forename);
-                if (actorExisting == null)
+                var existingActor = ctx.Actors.FirstOrDefault(i => i.Surname == actor.Surname && i.Forename == actor.Forename && i.Birthdate == actor.Birthdate);
+                if (existingActor == null)
                 {
                     ctx.Movies.Find(movieId).Actors.Add(new Actor()
                     {
                         Surname = actor.Surname,
-                        Forename = actor.Forename
+                        Forename = actor.Forename,
+                        Birthdate = actor.Birthdate
                     });
                     ctx.SaveChanges();
                     return true;
                 }
-                ctx.Movies.Find(movieId).Actors.Add(actorExisting);
+                ctx.Movies.Find(movieId).Actors.Add(existingActor);
                 ctx.SaveChanges();
                 return true;
             }
@@ -48,8 +49,43 @@ namespace PGSs.Services
                 {
                     Id = a.Id,
                     Forename = a.Forename,
-                    Surname = a.Surname
+                    Surname = a.Surname,
+                    Birthdate = a.Birthdate
                 }).ToList();
+            }
+        }
+
+        internal void DeleteFromDb(int actorId)
+        {
+            using (var ctx = new TvApiContext())
+            {
+                var actor = ctx.Actors.Find(actorId);
+                if(actor == null)
+                {
+                    return;
+                }
+                ctx.Actors.Remove(actor);
+                ctx.SaveChanges();
+            }
+        }
+
+        internal bool DeleteFromMovie(int movieId, int actorId)
+        {
+            using (var ctx = new TvApiContext())
+            {
+                var movie = ctx.Movies.Find(movieId);
+                if (movie == null)
+                {
+                    return false;
+                }
+                var actor = ctx.Actors.Find(actorId);
+                if(actor==null)
+                {
+                    return false;
+                }
+                movie.Actors.Remove(actor);
+                ctx.SaveChanges();
+                return true;
             }
         }
 
@@ -61,7 +97,8 @@ namespace PGSs.Services
                 {
                     Id = a.Id,
                     Forename = a.Forename,
-                    Surname = a.Surname
+                    Surname = a.Surname,
+                    Birthdate = a.Birthdate
                 }).ToList();
             }
         }
