@@ -9,11 +9,6 @@ namespace PGSs.Services
 {
     public class MovieService
     {
-        public MovieService()
-        {
-
-        }
-
         internal void Add(MovieRequest movie)
         {
             using (var ctx = new TvApiContext())
@@ -37,7 +32,6 @@ namespace PGSs.Services
                     Title = x.Title,
                     Year = x.Year
                 }).ToList();
-
             }
         }
 
@@ -63,14 +57,12 @@ namespace PGSs.Services
         {
             using (var ctx = new TvApiContext())
             {
-                var movies = ctx.Movies.Where(x => x.Year >= dateMin && x.Year <= dateMax).Select(m => new MovieResponse()
+                return ctx.Movies.Where(x => x.Year >= dateMin && x.Year <= dateMax).Select(m => new MovieResponse()
                 {
                     Id = m.Id,
                     Title = m.Title,
                     Year = m.Year
                 }).ToList();
-
-                return movies;
             }
         }
 
@@ -78,15 +70,12 @@ namespace PGSs.Services
         {
             using (var ctx = new TvApiContext())
             {
-                var movies = ctx.Movies.Where(x => x.Title.Contains(title)).Select(m => new MovieResponse()
+                return ctx.Movies.Where(x => x.Title.Contains(title)).Select(m => new MovieResponse()
                 {
                     Id = m.Id,
                     Title = m.Title,
                     Year = m.Year
                 }).ToList();
-                if (movies == null)
-                    return null;
-                return movies;
             }
         }
 
