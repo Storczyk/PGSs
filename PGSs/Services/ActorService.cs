@@ -46,7 +46,8 @@ namespace PGSs.Services
                 {
                     Id = m.Id,
                     Title = m.Title,
-                    Year = m.Year
+                    Year = m.Year,
+                    Genre = m.Genre
                 }).ToList();
             }
         }

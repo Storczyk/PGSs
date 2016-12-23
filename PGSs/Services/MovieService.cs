@@ -16,7 +16,9 @@ namespace PGSs.Services
                 ctx.Movies.Add(new Movie()
                 {
                     Title = movie.Title,
-                    Year = movie.Year
+                    Year = movie.Year,
+                    Genre = movie.Genre
+                   
                 });
                 ctx.SaveChanges();
             }
@@ -30,7 +32,8 @@ namespace PGSs.Services
                 {
                     Id = x.Id,
                     Title = x.Title,
-                    Year = x.Year
+                    Year = x.Year,
+                    Genre = x.Genre
                 }).ToList();
             }
         }
@@ -48,7 +51,8 @@ namespace PGSs.Services
                 {
                     Id = movie.Id,
                     Title = movie.Title,
-                    Year = movie.Year
+                    Year = movie.Year,
+                    Genre = movie.Genre
                 };
             }
         }
@@ -61,7 +65,8 @@ namespace PGSs.Services
                 {
                     Id = m.Id,
                     Title = m.Title,
-                    Year = m.Year
+                    Year = m.Year,
+                    Genre = m.Genre
                 }).ToList();
             }
         }
@@ -74,7 +79,26 @@ namespace PGSs.Services
                 {
                     Id = m.Id,
                     Title = m.Title,
-                    Year = m.Year
+                    Year = m.Year,
+                    Genre = m.Genre
+                }).ToList();
+            }
+        }
+
+        internal IEnumerable<MovieResponse> GetByGenre(Genres genre)
+        {
+            if(!Enum.IsDefined(typeof(Genres), genre))
+            {
+                return null;
+            }
+            using (var ctx = new TvApiContext())
+            {
+                return ctx.Movies.Where(g => g.Genre == genre).Select(m => new MovieResponse()
+                {
+                    Id = m.Id,
+                    Title = m.Title,
+                    Year=m.Year,
+                    Genre = m.Genre
                 }).ToList();
             }
         }

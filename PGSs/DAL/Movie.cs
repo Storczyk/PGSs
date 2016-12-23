@@ -17,7 +17,7 @@ namespace PGSs.DAL
         public int Id { get; set; }
         public string Title { get; set; }
         public int Year { get; set; }
-        
+        public Genres Genre { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
         public virtual ICollection<Actor> Actors { get; set; }

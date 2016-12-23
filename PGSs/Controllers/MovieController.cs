@@ -1,4 +1,5 @@
-﻿using PGSs.Models;
+﻿using PGSs.DAL;
+using PGSs.Models;
 using PGSs.Services;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace PGSs.Controllers
         }
 
         [HttpGet, Route("movies/date/{dateMin:int}")]
-        public IHttpActionResult GetMoviesByDate(int dateMin, int? dateMax=null)
+        public IHttpActionResult GetMoviesByDate(int dateMin, int? dateMax = null)
         {
             if (!dateMax.HasValue)
             {
@@ -65,6 +66,16 @@ namespace PGSs.Controllers
             var movies = _movieService.GetByTitle(title);
             return Ok(movies);
         }
+
+        [HttpGet, Route("movies/genre/{genre}")]
+        public IHttpActionResult GetMoviesByGenre(Genres genre)
+        {
+            var movies = _movieService.GetByGenre(genre);
+            if (movies == null)
+                return BadRequest();
+            return Ok(movies);
+        }
+
 
         [HttpDelete, Route("movies/{id:int}")]
         public IHttpActionResult Delete(int id)
