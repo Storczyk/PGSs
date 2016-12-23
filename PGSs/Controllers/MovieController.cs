@@ -19,6 +19,25 @@ namespace PGSs.Controllers
             _movieService = new MovieService();
         }
 
+        /****Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** */
+        [HttpGet, Route("movies/genre/{genre}")]
+        public IHttpActionResult GetMoviesByGenre(Genres genre)
+        {
+            var movies = _movieService.GetByGenre(genre);
+            if (movies == null)
+                return BadRequest();
+            return Ok(movies);
+        }
+        /* ***Top Movies*** ***Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies****/
+        [HttpGet, Route("movies/{genre}/top")]
+        public IHttpActionResult GetTopMovies(Genres genre)
+        {
+            var movies = _movieService.GetTopMovies(genre);
+            if (movies == null)
+                return BadRequest();
+            return Ok(movies);
+        }
+
         [HttpGet, Route("movies")]
         public IHttpActionResult GetAllMovies()
         {
@@ -64,15 +83,6 @@ namespace PGSs.Controllers
         public IHttpActionResult GetMoviesByTitle(string title)
         {
             var movies = _movieService.GetByTitle(title);
-            return Ok(movies);
-        }
-
-        [HttpGet, Route("movies/genre/{genre}")]
-        public IHttpActionResult GetMoviesByGenre(Genres genre)
-        {
-            var movies = _movieService.GetByGenre(genre);
-            if (movies == null)
-                return BadRequest();
             return Ok(movies);
         }
 

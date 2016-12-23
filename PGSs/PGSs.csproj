@@ -135,6 +135,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActorRequest.cs" />
     <Compile Include="Models\ActorRespone.cs" />
+    <Compile Include="Models\MovieAvgRateResponse.cs" />
     <Compile Include="Models\MovieRequest.cs" />
     <Compile Include="Models\MovieResponse.cs" />
     <Compile Include="Models\ReviewRequest.cs" />

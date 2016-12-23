@@ -23,6 +23,44 @@ namespace PGSs.Services
                 ctx.SaveChanges();
             }
         }
+        /* ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre*** */
+        internal IEnumerable<MovieResponse> GetByGenre(Genres genre)
+        {
+            if (!Enum.IsDefined(typeof(Genres), genre))
+            {
+                return null;
+            }
+            using (var ctx = new TvApiContext())
+            {
+                return ctx.Movies.Where(g => g.Genre == genre).Select(m => new MovieResponse()
+                {
+                    Id = m.Id,
+                    Title = m.Title,
+                    Year = m.Year,
+                    Genre = m.Genre
+                }).ToList();
+            }
+        }
+        /* ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** */
+        internal IEnumerable<MovieAvgRateResponse> GetTopMovies(Genres genre) //lub <MovvieResponse> ale nie mamy podanej średniej
+        {
+            if (!Enum.IsDefined(typeof(Genres), genre))
+            {
+                return null;
+            }
+            using (var ctx = new TvApiContext())
+            {
+                return ctx.Movies.Where(i => i.Genre == genre && i.Reviews.Any()).OrderByDescending(i => i.Reviews.Average(d => d.Rate)).Take(10).Select(m => new MovieAvgRateResponse()
+                {
+                    Id = m.Id,
+                    Genre = m.Genre,
+                    Title = m.Title,
+                    Year = m.Year,
+                    AverageRate = m.Reviews.Average(i => i.Rate) /*Dla nowego modelu MovieAvgRateResponse*/     
+                }).ToList();
+            }
+        }
+
 
         internal IEnumerable<MovieResponse> GetAllMovies()
         {
@@ -80,24 +118,6 @@ namespace PGSs.Services
                     Id = m.Id,
                     Title = m.Title,
                     Year = m.Year,
-                    Genre = m.Genre
-                }).ToList();
-            }
-        }
-
-        internal IEnumerable<MovieResponse> GetByGenre(Genres genre)
-        {
-            if(!Enum.IsDefined(typeof(Genres), genre))
-            {
-                return null;
-            }
-            using (var ctx = new TvApiContext())
-            {
-                return ctx.Movies.Where(g => g.Genre == genre).Select(m => new MovieResponse()
-                {
-                    Id = m.Id,
-                    Title = m.Title,
-                    Year=m.Year,
                     Genre = m.Genre
                 }).ToList();
             }

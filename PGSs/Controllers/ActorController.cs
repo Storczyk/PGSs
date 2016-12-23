@@ -16,6 +16,17 @@ namespace PGSs.Controllers
         {
             _actorService = new ActorService();
         }
+        /*Wszystkie filmy w ktorych jest aktor*/
+        [HttpGet, Route("actors/{actorId:int}/movies")]
+        public IHttpActionResult GetMoviesForActor(int actorId)
+        {
+            var movies = _actorService.GetMoviesForActor(actorId);
+            if (movies == null) //null gdy aktor nie istnieje
+            {
+                return BadRequest();
+            }
+            return Ok(movies);
+        }
 
         [HttpGet, Route("movies/{movieId:int}/actors")]
         public IHttpActionResult GetActorsForMovie(int movieId)
@@ -31,16 +42,6 @@ namespace PGSs.Controllers
             return Ok(actors);
         }
 
-        [HttpGet, Route("actors/{actorId:int}/movies")]
-        public IHttpActionResult GetMoviesForActor(int actorId)
-        {
-            var movies = _actorService.GetMoviesForActor(actorId);
-            if(movies == null) //null gdy aktor nie istnieje
-            {
-                return BadRequest();
-            }
-            return Ok(movies);
-        }
 
         [HttpPost, Route("movies/{movieId:int}/actor")]
         public IHttpActionResult AddActorForMovie(int movieId, [FromBody]ActorRequest actor)
@@ -59,7 +60,6 @@ namespace PGSs.Controllers
         [HttpDelete, Route("movies/{movieId:int}/{actorId:int}")]
         public IHttpActionResult DeleteFromMovie(int movieId, int actorId)
         {
-            /*Wersja 1*/
             if (!_actorService.DeleteFromMovie(movieId, actorId))
             { 
                 return BadRequest();
@@ -70,7 +70,6 @@ namespace PGSs.Controllers
         [HttpDelete, Route("actors/{actorId:int}")]
         public IHttpActionResult DeleteFromDb(int actorId)
         {
-            /*Wersja 2 //zawsze zwraca "deleted" nawet jak encja (już) nie istnieje*/
             _actorService.DeleteFromDb(actorId); 
             return Ok("deleted");
         }
