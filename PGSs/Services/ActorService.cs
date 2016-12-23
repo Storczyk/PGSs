@@ -33,6 +33,24 @@ namespace PGSs.Services
             }
         }
 
+        internal IEnumerable<MovieResponse> GetMoviesForActor(int actorId)
+        {
+            using (var ctx = new TvApiContext())
+            {
+                var actor = ctx.Actors.Find(actorId);
+                if(actor == null)
+                {
+                    return null;
+                }
+                return actor.Movies.OrderBy(i => i.Title).Select(m => new MovieResponse()
+                {
+                    Id = m.Id,
+                    Title = m.Title,
+                    Year = m.Year
+                }).ToList();
+            }
+        }
+
         internal IEnumerable<ActorRespone> GetActorsForMovie(int movieId)
         {
             using (var ctx = new TvApiContext())

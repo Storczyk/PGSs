@@ -31,6 +31,17 @@ namespace PGSs.Controllers
             return Ok(actors);
         }
 
+        [HttpGet, Route("actors/{actorId:int}/movies")]
+        public IHttpActionResult GetMoviesForActor(int actorId)
+        {
+            var movies = _actorService.GetMoviesForActor(actorId);
+            if(movies == null) //null gdy aktor nie istnieje
+            {
+                return BadRequest();
+            }
+            return Ok(movies);
+        }
+
         [HttpPost, Route("movies/{movieId:int}/actor")]
         public IHttpActionResult AddActorForMovie(int movieId, [FromBody]ActorRequest actor)
         {
