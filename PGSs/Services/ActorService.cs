@@ -9,7 +9,7 @@ namespace PGSs.Services
 {
     public class ActorService
     {
-        internal bool Add(int movieId, ActorRequest actor)
+        internal bool Add(int movieId, ActorRequest actorRequest)
         {
             using (var ctx = new TvApiContext())
             {
@@ -17,19 +17,17 @@ namespace PGSs.Services
                 {
                     return false;
                 }
-                var existingActor = ctx.Actors.FirstOrDefault(i => i.Surname == actor.Surname && i.Forename == actor.Forename && i.Birthdate == actor.Birthdate);
-                if (existingActor == null)
+                var actor = ctx.Actors.FirstOrDefault(i => i.Surname == actorRequest.Surname && i.Forename == actorRequest.Forename && i.Birthdate == actorRequest.Birthdate);
+                if (actor == null)
                 {
-                    ctx.Movies.Find(movieId).Actors.Add(new Actor()
+                    actor = new Actor()
                     {
-                        Surname = actor.Surname,
-                        Forename = actor.Forename,
-                        Birthdate = actor.Birthdate
-                    });
-                    ctx.SaveChanges();
-                    return true;
+                        Forename = actorRequest.Forename,
+                        Surname = actorRequest.Surname,
+                        Birthdate = actorRequest.Birthdate
+                    };
                 }
-                ctx.Movies.Find(movieId).Actors.Add(existingActor);
+                ctx.Movies.Find(movieId).Actors.Add(actor);
                 ctx.SaveChanges();
                 return true;
             }
@@ -60,7 +58,7 @@ namespace PGSs.Services
             using (var ctx = new TvApiContext())
             {
                 var actor = ctx.Actors.Find(actorId);
-                if(actor == null)
+                if (actor == null)
                 {
                     return;
                 }
@@ -79,7 +77,7 @@ namespace PGSs.Services
                     return false;
                 }
                 var actor = ctx.Actors.Find(actorId);
-                if(actor==null)
+                if (actor == null)
                 {
                     return false;
                 }
