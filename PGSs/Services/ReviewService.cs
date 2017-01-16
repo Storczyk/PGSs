@@ -1,4 +1,5 @@
 ﻿using PGSs.DAL;
+using PGSs.Filters;
 using PGSs.Models;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace PGSs.Services
             {
                 var movie = ctx.Movies.Find(movieId);
                 if (movie == null)
-                { 
-                    return;
+                {
+                    throw new TvApiException("Inavlid movie Id");
                 }
                 movie.Reviews.Add(new Review()
                 {

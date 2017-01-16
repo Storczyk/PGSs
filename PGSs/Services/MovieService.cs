@@ -41,7 +41,7 @@ namespace PGSs.Services
                 }).ToList();
             }
         }
-        /* ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** */
+        /* *** 10 Top Movies*** *** 10 Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** ***Top Movies*** */
         internal IEnumerable<MovieAvgRateResponse> GetTopMovies(Genres genre) //lub <MovvieResponse> ale nie mamy podanej średniej
         {
             if (!Enum.IsDefined(typeof(Genres), genre))

@@ -1,4 +1,5 @@
-﻿using PGSs.Models;
+﻿using PGSs.Filters;
+using PGSs.Models;
 using PGSs.Services;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace PGSs.Controllers
             _reviewService = new ReviewService();
         }
 
+        [TvApiExceptionFilter]
         [HttpPost, Route("movies/{movieId:int}/review")]
         public IHttpActionResult AddReviewToMovie(int movieId, ReviewRequest request)
         {

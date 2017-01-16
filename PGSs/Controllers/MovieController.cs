@@ -1,4 +1,5 @@
 ﻿using PGSs.DAL;
+using PGSs.Filters;
 using PGSs.Models;
 using PGSs.Services;
 using System;
@@ -37,20 +38,21 @@ namespace PGSs.Controllers
                 return BadRequest();
             return Ok(movies);
         }
-
+        [ExecutionTime]
         [HttpGet, Route("movies")]
         public IHttpActionResult GetAllMovies()
         {
             return Ok(_movieService.GetAllMovies());
         }
 
+        [ModelValidation]
         [HttpPost, Route("movies")]
         public IHttpActionResult AddMovie([FromBody]MovieRequest movie)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
             _movieService.Add(movie);
             return Ok("added");
         }
