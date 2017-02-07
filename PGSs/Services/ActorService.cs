@@ -1,4 +1,5 @@
 ﻿using PGSs.DAL;
+using PGSs.Filters;
 using PGSs.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace PGSs.Services
             {
                 if (ctx.Movies.FirstOrDefault(i => i.Id == movieId) == null)
                 {
-                    return false;
+                    throw new TvApiException("Invalid movie ID");
                 }
                 var actor = ctx.Actors.FirstOrDefault(i => i.Surname == actorRequest.Surname && i.Forename == actorRequest.Forename && i.Birthdate == actorRequest.Birthdate);
                 if (actor == null)
@@ -32,7 +33,6 @@ namespace PGSs.Services
                 return true;
             }
         }
-        /*Filmy w ktorych wystapic aktor Filmy w ktorych wystapic aktor Filmy w ktorych wystapic aktor Filmy w ktorych wystapic aktor*/
         internal IEnumerable<MovieResponse> GetMoviesForActor(int actorId)
         {
             using (var ctx = new TvApiContext())
@@ -40,7 +40,7 @@ namespace PGSs.Services
                 var actor = ctx.Actors.Find(actorId);
                 if(actor == null)
                 {
-                    return null;
+                    throw new TvApiException("Invalid actor ID");
                 }
                 return actor.Movies.OrderBy(i => i.Title).Select(m => new MovieResponse()
                 {
@@ -59,7 +59,7 @@ namespace PGSs.Services
                 var movie = ctx.Movies.Find(movieId);
                 if (movie == null)
                 {
-                    return null;
+                    throw new TvApiException("Invalid movie ID");
                 }
 
                 return movie.Actors.Select(a => new ActorRespone()
@@ -79,7 +79,7 @@ namespace PGSs.Services
                 var actor = ctx.Actors.Find(actorId);
                 if (actor == null)
                 {
-                    return;
+                    throw new TvApiException("Invalid actor ID");
                 }
                 ctx.Actors.Remove(actor);
                 ctx.SaveChanges();
@@ -93,12 +93,12 @@ namespace PGSs.Services
                 var movie = ctx.Movies.Find(movieId);
                 if (movie == null)
                 {
-                    return false;
+                    throw new TvApiException("Invalid movie ID");
                 }
                 var actor = ctx.Actors.Find(actorId);
                 if (actor == null)
                 {
-                    return false;
+                    throw new TvApiException("Invalid actor ID");
                 }
                 movie.Actors.Remove(actor);
                 ctx.SaveChanges();

@@ -35,7 +35,7 @@ namespace PGSs.Services
             {
                 var movie = ctx.Movies.Find(movieId);
                 if (movie == null)
-                    return null;
+                    throw new TvApiException("Invalid movie ID");
                 return movie.Reviews.Select(i => new ReviewResponse()
                 {
                     Id = i.Id,
@@ -51,8 +51,8 @@ namespace PGSs.Services
             {
                 var movie = ctx.Movies.Find(movieId);
                 if (movie == null)
-                    return null;
-                if(movie.Reviews.Select(r => r.Rate).Any())
+                    throw new TvApiException("Invalid movie ID");
+                if (movie.Reviews.Select(r => r.Rate).Any())
                 {
                     var rate = movie.Reviews.Average(i => i.Rate);
                     return rate;

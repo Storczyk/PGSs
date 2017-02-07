@@ -1,0 +1,19 @@
+2017-02-03 21:45:09.8916|ERROR|PGSs.Infrastructure.NLogExceptionLogger|PGSs.Filters.TvApiException: inavlid movie ID
+   w PGSs.Services.MovieService.Find(Int32 id) w D:\VSCommunity\PGSs\PGSs\Services\MovieService.cs:wiersz 87
+   w PGSs.Controllers.MovieController.GetById(Int32 id) w D:\VSCommunity\PGSs\PGSs\Controllers\MovieController.cs:wiersz 59
+   w lambda_method(Closure , Object , Object[] )
+   w System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   w System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   w System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()

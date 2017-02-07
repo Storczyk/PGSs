@@ -4,31 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using PGSs.Models;
+using PGSs.Filters;
 
 namespace PGSs.Services
 {
     public class MovieService
     {
-        internal void Add(MovieRequest movie)
+        internal void Add(MovieRequest movie, IDatabaseAccess ctx)
         {
-            using (var ctx = new TvApiContext())
-            {
-                ctx.Movies.Add(new Movie()
-                {
-                    Title = movie.Title,
-                    Year = movie.Year,
-                    Genre = movie.Genre
-                   
-                });
-                ctx.SaveChanges();
-            }
+
+            ctx.Add(movie);
         }
         /* ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre*** */
         internal IEnumerable<MovieResponse> GetByGenre(Genres genre)
         {
             if (!Enum.IsDefined(typeof(Genres), genre))
             {
-                return null;
+                throw new TvApiException("inavlid genre");
             }
             using (var ctx = new TvApiContext())
             {
@@ -46,7 +38,7 @@ namespace PGSs.Services
         {
             if (!Enum.IsDefined(typeof(Genres), genre))
             {
-                return null;
+                throw new TvApiException("inavlid genre");
             }
             using (var ctx = new TvApiContext())
             {
@@ -83,7 +75,7 @@ namespace PGSs.Services
                 var movie = ctx.Movies.Find(id);
                 if (movie == null)
                 {
-                    return null;
+                    throw new TvApiException("inavlid movie ID");
                 }
                 return new MovieResponse()
                 {
@@ -130,7 +122,7 @@ namespace PGSs.Services
                 var movie = ctx.Movies.Find(id);
                 if(movie == null)
                 {
-                    return;
+                    throw new TvApiException("inavlid movie ID");
                 }
                 ctx.Movies.Remove(movie);
                 ctx.SaveChanges();

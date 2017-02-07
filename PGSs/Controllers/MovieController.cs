@@ -14,22 +14,20 @@ namespace PGSs.Controllers
     public class MovieController : ApiController
     {
         private MovieService _movieService;
-
+        private IDatabaseAccess _ctx;
         public MovieController()
         {
             _movieService = new MovieService();
+            _ctx = new DatabaseAccess();
         }
-
-        /****Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** ***Movies by Genre *** */
+        [TvApiExceptionFilter]
         [HttpGet, Route("movies/genre/{genre}")]
         public IHttpActionResult GetMoviesByGenre(Genres genre)
         {
             var movies = _movieService.GetByGenre(genre);
-            if (movies == null)
-                return BadRequest();
             return Ok(movies);
         }
-        /* ***Top Movies*** ***Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies******Top Movies****/
+        [TvApiExceptionFilter]
         [HttpGet, Route("movies/{genre}/top")]
         public IHttpActionResult GetTopMovies(Genres genre)
         {
@@ -39,31 +37,28 @@ namespace PGSs.Controllers
             return Ok(movies);
         }
         [ExecutionTime]
+        [TvApiExceptionFilter]
         [HttpGet, Route("movies")]
         public IHttpActionResult GetAllMovies()
         {
             return Ok(_movieService.GetAllMovies());
         }
-
+        [TvApiExceptionFilter]
         [ModelValidation]
         [HttpPost, Route("movies")]
         public IHttpActionResult AddMovie([FromBody]MovieRequest movie)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-            _movieService.Add(movie);
+            _movieService.Add(movie, _ctx);
             return Ok("added");
         }
-
+        [TvApiExceptionFilter]
         [HttpGet, Route("movies/{id:int}")]
         public IHttpActionResult GetById(int id)
         {
             var movie = _movieService.Find(id);
             return Ok(movie);
         }
-
+        [TvApiExceptionFilter]
         [HttpGet, Route("movies/date/{dateMin:int}")]
         public IHttpActionResult GetMoviesByDate(int dateMin, int? dateMax = null)
         {
@@ -80,7 +75,7 @@ namespace PGSs.Controllers
             var movies = _movieService.GetByDate(dateMin, dateMax.Value);
             return Ok(movies);
         }
-
+        [TvApiExceptionFilter]
         [HttpGet, Route("movies/title/{title}")]
         public IHttpActionResult GetMoviesByTitle(string title)
         {
@@ -88,7 +83,7 @@ namespace PGSs.Controllers
             return Ok(movies);
         }
 
-
+        [TvApiExceptionFilter]
         [HttpDelete, Route("movies/{id:int}")]
         public IHttpActionResult Delete(int id)
         {

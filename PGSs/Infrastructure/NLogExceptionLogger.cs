@@ -8,9 +8,10 @@ namespace PGSs.Infrastructure
 {
     public class NLogExceptionLogger:ExceptionLogger
     {
+        private readonly static NLog.Logger nLogger = NLog.LogManager.GetCurrentClassLogger();
         public override void Log(ExceptionLoggerContext context)
         {
-           
+            nLogger.Error(context.Exception);
         }
     }
 }

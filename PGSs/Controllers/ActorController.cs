@@ -1,4 +1,5 @@
-﻿using PGSs.Models;
+﻿using PGSs.Filters;
+using PGSs.Models;
 using PGSs.Services;
 using System;
 using System.Collections.Generic;
@@ -17,17 +18,14 @@ namespace PGSs.Controllers
             _actorService = new ActorService();
         }
         /*Wszystkie filmy w ktorych jest aktor*/
+        [TvApiExceptionFilter]
         [HttpGet, Route("actors/{actorId:int}/movies")]
         public IHttpActionResult GetMoviesForActor(int actorId)
         {
             var movies = _actorService.GetMoviesForActor(actorId);
-            if (movies == null) //null gdy aktor nie istnieje
-            {
-                return BadRequest();
-            }
             return Ok(movies);
         }
-
+        [TvApiExceptionFilter]
         [HttpGet, Route("movies/{movieId:int}/actors")]
         public IHttpActionResult GetActorsForMovie(int movieId)
         {
@@ -41,22 +39,18 @@ namespace PGSs.Controllers
             var actors = _actorService.GetAllActors();
             return Ok(actors);
         }
-
-
+        [TvApiExceptionFilter]
+        [ModelValidation]
         [HttpPost, Route("movies/{movieId:int}/actor")]
         public IHttpActionResult AddActorForMovie(int movieId, [FromBody]ActorRequest actor)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
             if (!_actorService.Add(movieId, actor))
             {
                 return BadRequest();
             }
             return Ok("added");
         }
-
+        [TvApiExceptionFilter]
         [HttpDelete, Route("movies/{movieId:int}/{actorId:int}")]
         public IHttpActionResult DeleteFromMovie(int movieId, int actorId)
         {
@@ -66,7 +60,7 @@ namespace PGSs.Controllers
             }
             return Ok("deleted");
         }
-
+        [TvApiExceptionFilter]
         [HttpDelete, Route("actors/{actorId:int}")]
         public IHttpActionResult DeleteFromDb(int actorId)
         {

@@ -99,6 +99,8 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ActorController.cs" />
+    <Compile Include="Services\DatabaseAccess.cs" />
+    <Compile Include="Services\IDatabaseAccess.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="DAL\Actor.cs" />
