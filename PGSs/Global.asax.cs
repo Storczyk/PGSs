@@ -15,6 +15,7 @@ namespace PGSs
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<TvApiContext, Migrations.Configuration>());
+            
         }
     }
 }

@@ -19,7 +19,7 @@ namespace PGSs.Controllers
             _reviewService = new ReviewService();
         }
 
-        [TvApiExceptionFilter]
+
         [ModelValidation]
         [HttpPost, Route("movies/{movieId:int}/review")]
         public IHttpActionResult AddReviewToMovie(int movieId, ReviewRequest request)
@@ -31,13 +31,14 @@ namespace PGSs.Controllers
             _reviewService.AddReviewToMovie(movieId, request);
             return Ok("Review added");
         }
-        [TvApiExceptionFilter]
+
         [HttpGet, Route("movies/{movieId:int}/reviews")]
         public IHttpActionResult GetReviewsForMovie(int movieId)
         {
             return Ok(_reviewService.GetReviewsForMovie(movieId));
         }
-        [TvApiExceptionFilter]
+
+        //4.       Zwracanie średniej oceny dla filmu
         [HttpGet, Route("movies/{movieId:int}/rate")]
         public IHttpActionResult GetAvgRateForMovieById(int movieId)
         {

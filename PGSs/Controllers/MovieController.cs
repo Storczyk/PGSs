@@ -14,20 +14,20 @@ namespace PGSs.Controllers
     public class MovieController : ApiController
     {
         private MovieService _movieService;
-        private IDatabaseAccess _ctx;
         public MovieController()
         {
             _movieService = new MovieService();
-            _ctx = new DatabaseAccess();
         }
-        [TvApiExceptionFilter]
+
+        //- pole Genre (czyli kateogira filmu jak komedia itp) w Movie. I wyszukiwanie po kategorii
         [HttpGet, Route("movies/genre/{genre}")]
         public IHttpActionResult GetMoviesByGenre(Genres genre)
         {
             var movies = _movieService.GetByGenre(genre);
             return Ok(movies);
         }
-        [TvApiExceptionFilter]
+
+        //- wyszukiwanie top 10 filmow z danej kategorii (czyli sortowanie po usrednionej wartosci) 
         [HttpGet, Route("movies/{genre}/top")]
         public IHttpActionResult GetTopMovies(Genres genre)
         {
@@ -37,18 +37,18 @@ namespace PGSs.Controllers
             return Ok(movies);
         }
         [ExecutionTime]
-        [TvApiExceptionFilter]
+
         [HttpGet, Route("movies")]
         public IHttpActionResult GetAllMovies()
         {
             return Ok(_movieService.GetAllMovies());
         }
-        [TvApiExceptionFilter]
+
         [ModelValidation]
         [HttpPost, Route("movies")]
         public IHttpActionResult AddMovie([FromBody]MovieRequest movie)
         {
-            _movieService.Add(movie, _ctx);
+            _movieService.Add(movie);
             return Ok("added");
         }
         [TvApiExceptionFilter]
@@ -58,7 +58,8 @@ namespace PGSs.Controllers
             var movie = _movieService.Find(id);
             return Ok(movie);
         }
-        [TvApiExceptionFilter]
+
+        //2. Wyszukiwanie filmów po roku wydania
         [HttpGet, Route("movies/date/{dateMin:int}")]
         public IHttpActionResult GetMoviesByDate(int dateMin, int? dateMax = null)
         {
@@ -75,7 +76,8 @@ namespace PGSs.Controllers
             var movies = _movieService.GetByDate(dateMin, dateMax.Value);
             return Ok(movies);
         }
-        [TvApiExceptionFilter]
+
+        //3.       Wyszukiwanie filmów po tytule (lub po części tytułu)
         [HttpGet, Route("movies/title/{title}")]
         public IHttpActionResult GetMoviesByTitle(string title)
         {
@@ -83,7 +85,6 @@ namespace PGSs.Controllers
             return Ok(movies);
         }
 
-        [TvApiExceptionFilter]
         [HttpDelete, Route("movies/{id:int}")]
         public IHttpActionResult Delete(int id)
         {

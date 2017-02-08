@@ -10,11 +10,24 @@ namespace PGSs.Services
 {
     public class MovieService
     {
-        internal void Add(MovieRequest movie, IDatabaseAccess ctx)
+        internal void Add(MovieRequest movie)
         {
-
-            ctx.Add(movie);
+            using (var ctx = new TvApiContext())
+            {
+                var movieexist = ctx.Movies.Where(i => i.Title == movie.Title && i.Year == movie.Year).FirstOrDefault();
+                if(movieexist == null)
+                {
+                    return;
+                }
+                ctx.Movies.Add(new Movie()
+                {
+                    Title = movie.Title,
+                    Year = movie.Year
+                });
+                ctx.SaveChanges();
+            }
         }
+
         /* ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre***  ***Movies By Genre*** */
         internal IEnumerable<MovieResponse> GetByGenre(Genres genre)
         {

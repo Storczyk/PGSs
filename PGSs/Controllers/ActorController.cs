@@ -17,7 +17,8 @@ namespace PGSs.Controllers
         {
             _actorService = new ActorService();
         }
-        /*Wszystkie filmy w ktorych jest aktor*/
+
+        //- wyszukiwanie wszystkich filmów w których dany aktor wystąpił 
         [TvApiExceptionFilter]
         [HttpGet, Route("actors/{actorId:int}/movies")]
         public IHttpActionResult GetMoviesForActor(int actorId)
@@ -39,7 +40,8 @@ namespace PGSs.Controllers
             var actors = _actorService.GetAllActors();
             return Ok(actors);
         }
-        [TvApiExceptionFilter]
+
+        //1.       Dodawanie aktorów do filmów (relacja many-to-many)
         [ModelValidation]
         [HttpPost, Route("movies/{movieId:int}/actor")]
         public IHttpActionResult AddActorForMovie(int movieId, [FromBody]ActorRequest actor)
@@ -50,7 +52,7 @@ namespace PGSs.Controllers
             }
             return Ok("added");
         }
-        [TvApiExceptionFilter]
+
         [HttpDelete, Route("movies/{movieId:int}/{actorId:int}")]
         public IHttpActionResult DeleteFromMovie(int movieId, int actorId)
         {
@@ -60,7 +62,7 @@ namespace PGSs.Controllers
             }
             return Ok("deleted");
         }
-        [TvApiExceptionFilter]
+
         [HttpDelete, Route("actors/{actorId:int}")]
         public IHttpActionResult DeleteFromDb(int actorId)
         {
