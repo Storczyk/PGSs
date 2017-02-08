@@ -17,3 +17,118 @@
    w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
    w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
    w System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()
+2017-02-08 16:36:55.0447|ERROR|PGSs.Infrastructure.NLogExceptionLogger|System.NullReferenceException: Odwo³anie do obiektu nie zosta³o ustawione na wyst¹pienie obiektu.
+   w PGSs.Services.TraktTvService.<DownloadMovies>d__1.MoveNext() w D:\VSCommunity\PGSs\PGSs\Services\TraktTvService.cs:wiersz 20
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   w PGSs.Controllers.JobsController.<ExecuteJobs>d__0.MoveNext() w D:\VSCommunity\PGSs\PGSs\Controllers\JobsController.cs:wiersz 18
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2017-02-08 16:37:40.1191|ERROR|PGSs.Infrastructure.NLogExceptionLogger|System.NullReferenceException: Odwo³anie do obiektu nie zosta³o ustawione na wyst¹pienie obiektu.
+   w PGSs.Services.TraktTvService.<DownloadMovies>d__1.MoveNext() w D:\VSCommunity\PGSs\PGSs\Services\TraktTvService.cs:wiersz 20
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   w PGSs.Controllers.JobsController.<ExecuteJobs>d__0.MoveNext() w D:\VSCommunity\PGSs\PGSs\Controllers\JobsController.cs:wiersz 18
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2017-02-08 16:38:00.9445|ERROR|PGSs.Infrastructure.NLogExceptionLogger|System.NullReferenceException: Odwo³anie do obiektu nie zosta³o ustawione na wyst¹pienie obiektu.
+   w PGSs.Services.TraktTvService.<DownloadMovies>d__1.MoveNext() w D:\VSCommunity\PGSs\PGSs\Services\TraktTvService.cs:wiersz 20
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   w PGSs.Controllers.JobsController.<ExecuteJobs>d__0.MoveNext() w D:\VSCommunity\PGSs\PGSs\Controllers\JobsController.cs:wiersz 18
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2017-02-08 16:38:08.4670|ERROR|PGSs.Infrastructure.NLogExceptionLogger|System.NullReferenceException: Odwo³anie do obiektu nie zosta³o ustawione na wyst¹pienie obiektu.
+   w PGSs.Services.TraktTvService.<DownloadMovies>d__1.MoveNext() w D:\VSCommunity\PGSs\PGSs\Services\TraktTvService.cs:wiersz 20
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   w PGSs.Controllers.JobsController.<ExecuteJobs>d__0.MoveNext() w D:\VSCommunity\PGSs\PGSs\Controllers\JobsController.cs:wiersz 18
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+2017-02-08 16:38:21.8184|ERROR|PGSs.Infrastructure.NLogExceptionLogger|System.NullReferenceException: Odwo³anie do obiektu nie zosta³o ustawione na wyst¹pienie obiektu.
+   w PGSs.Services.TraktTvService.<DownloadMovies>d__1.MoveNext() w D:\VSCommunity\PGSs\PGSs\Services\TraktTvService.cs:wiersz 20
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   w PGSs.Controllers.JobsController.<ExecuteJobs>d__0.MoveNext() w D:\VSCommunity\PGSs\PGSs\Controllers\JobsController.cs:wiersz 18
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Threading.Tasks.TaskHelpersExtensions.<CastToObject>d__3`1.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- Koniec œladu stosu z poprzedniej lokalizacji, w której wyst¹pi³ wyj¹tek ---
+   w System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   w System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   w System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()

@@ -15,7 +15,7 @@ namespace PGSs.Services
             using (var ctx = new TvApiContext())
             {
                 var movieexist = ctx.Movies.Where(i => i.Title == movie.Title && i.Year == movie.Year).FirstOrDefault();
-                if(movieexist == null)
+                if(movieexist != null)
                 {
                     return;
                 }
